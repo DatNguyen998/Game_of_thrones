@@ -9,9 +9,10 @@ N = len(categories)
 characters = {
     "Jon Snow": [9, 8, 4, 7, 7, 9, 6],
     "Tywin Lannister": [9, 6, 8, 10, 9, 9, 9],
-    "Varys": [7, 2, 10, 9, 9, 10, 8],
+    "Lord Varys": [7, 2, 10, 9, 9, 10, 8],
     "Arya Stark": [6, 10, 7, 7, 6, 8, 5],
-    "Sansa Stark": [7, 2, 8, 8, 8, 9, 7]
+    "Sansa Stark": [7, 2, 8, 8, 8, 9, 7],
+    "Daenerys Targaryen": [8,7,6,7,6,6,7]
 }
 
 # Radar chart setup
@@ -30,6 +31,6 @@ ax.set_xticks(angles[:-1])
 ax.set_xticklabels(categories, fontsize=10)
 ax.set_yticklabels([])
 ax.set_title("Character Skill Profiles – Game of Thrones", size=14, pad=20)
-ax.legend(loc='upper right', bbox_to_anchor=(1.3, 1.1))
+ax.legend(loc='upper right', bbox_to_anchor=(1.5, 1.1))
 
 plt.show()
