@@ -12,3 +12,25 @@ characters = {
 
 Use ChatGpt to evaluate characters based on their traits and giving relevant scores.
 Finally, using Matlab to create a Radar Chart.
+
+# got_python
+
+This folder is intended to hold all Python code related to Game of Thrones analysis for the repository.
+
+Purpose
+- Organize Python modules that analyze or evaluate characters and other data related to GoT.
+- Provide a clear package boundary so Python code can be imported as `got_python`.
+
+Suggested structure
+- got_python/
+  - __init__.py
+  - characters.py        # character classes, loaders, analyzers
+  - utils.py             # helper utilities (parsing, common constants)
+  - data/                 # optional: packaged or example data
+  - tests/                # unit tests for the Python modules
+
+Example usage
+```py
+# from the repository root (or after installing as a package)
+from got_python import characters
+# characters.do_some_analysis(...
