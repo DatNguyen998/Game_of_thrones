@@ -1,6 +1,20 @@
 # Game_of_thrones
 This is simply an idea to evaluate some characters in GoT.
 
+# Westeros Chess
+
+A fully playable chess game skinned with Game of Thrones characters — open
+`westeros_chess.html` in any browser, no build step or install required.
+
+- Standard chess rules (legal moves, check/checkmate/stalemate/draw detection,
+  castling, en passant, pawn promotion) via the bundled [chess.js](https://github.com/jhlywa/chess.js)
+  engine.
+- Click a piece to see its legal moves highlighted, then click a destination
+  square to move. Each of the 32 pieces is a named GoT character whose
+  identity follows it through captures, castling, and promotion.
+- Move history, a "Fallen" panel for captured pieces, undo, and a board-flip
+  toggle are all built in.
+
 Create the Radar chart for some of the fav characters in GoT.
 characters = {
     "Jon Snow": [9, 8, 4, 7, 7, 9, 6],
