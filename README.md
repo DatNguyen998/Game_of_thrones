@@ -29,17 +29,19 @@ build step or install required.
   and more) with popups tying each one back to the character roster used in
   Westeros Chess. A region legend in the sidebar flies the map to any region.
 
-Create the Radar chart for some of the fav characters in GoT.
-characters = {
-    "Jon Snow": [9, 8, 4, 7, 7, 9, 6],
-    "Tywin Lannister": [9, 6, 8, 10, 9, 9, 9],
-    "Varys": [7, 2, 10, 9, 9, 10, 8],
-    "Arya Stark": [6, 10, 7, 7, 6, 8, 5],
-    "Sansa Stark": [7, 2, 8, 8, 8, 9, 7]
-}
+# Radar chart
 
-Use ChatGpt to evaluate characters based on their traits and giving relevant scores.
-Finally, using Matlab to create a Radar Chart.
+`GOT.py` plots a radar chart comparing characters across traits like
+Leadership, Combat, and Scheming (scores chosen subjectively — feel free to
+tweak them). Its legend shows each character's portrait instead of plain
+text: circular avatars generated offline with [DiceBear](https://www.dicebear.com)
+(MIT licensed) from the character's name — original illustrations, not show
+photos. See `avatars/README.md` to regenerate or add more.
+
+```
+pip install matplotlib numpy pillow
+python GOT.py
+```
 
 # got_python
 
