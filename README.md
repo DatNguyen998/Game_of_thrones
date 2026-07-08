@@ -15,6 +15,20 @@ A fully playable chess game skinned with Game of Thrones characters — open
 - Move history, a "Fallen" panel for captured pieces, undo, and a board-flip
   toggle are all built in.
 
+# Map of Westeros
+
+An interactive map of Westeros — open `westeros_map.html` in any browser, no
+build step or install required.
+
+- Built with [Leaflet](https://leafletjs.com) in `CRS.Simple` mode (a flat
+  coordinate plane rather than real-world lat/lng), bundled inline so it
+  needs no network access to run.
+- The coastline, rivers, forests, mountains and the Wall are original vector
+  shapes drawn for this project — not a trace of the show's map artwork.
+- 14 clickable seats (Winterfell, King's Landing, Casterly Rock, Sunspear,
+  and more) with popups tying each one back to the character roster used in
+  Westeros Chess. A region legend in the sidebar flies the map to any region.
+
 Create the Radar chart for some of the fav characters in GoT.
 characters = {
     "Jon Snow": [9, 8, 4, 7, 7, 9, 6],
