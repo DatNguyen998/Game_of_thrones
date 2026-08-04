@@ -29,6 +29,19 @@ build step or install required.
   and more) with popups tying each one back to the character roster used in
   Westeros Chess. A region legend in the sidebar flies the map to any region.
 
+# Chronicle of Westeros
+
+A maester's-chronicle recap of the whole story — open `westeros_chronicle.html`
+in any browser, no build step or install required.
+
+- Five eras from Ned Stark's execution through the Battle of Winterfell and
+  the fall of King's Landing, a fate ledger for all eight great houses plus
+  the Night's Watch, and arcs for the seven characters who decided most of it.
+- An original brass-astrolabe motif animates behind the header (canvas,
+  respects reduced-motion), with a Fraunces/Newsreader type pairing bundled
+  inline as base64 fonts — no network access needed, and it adapts to both
+  light and dark themes.
+
 # Radar chart
 
 `GOT.py` plots a radar chart comparing characters across traits like
