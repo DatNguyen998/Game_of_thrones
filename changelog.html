@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Changelog · A Song of Ice and Fire</title>
+<style>
+:root {
+  --surface: #12151b;
+  --surface-2: #191e25;
+  --surface-3: #212830;
+  --text: #e9e4d6;
+  --text-dim: #a39d8c;
+  --brass: #c9a24c;
+  --brass-dim: #8a6a38;
+  --blood: #c1494a;
+  --rule: rgba(201, 162, 76, 0.24);
+  --good: #6ba080;
+  --warn: #c98a4b;
+  --neutral: #7c8798;
+  --shadow: rgba(0, 0, 0, 0.45);
+  --tag-added-bg: rgba(107, 160, 128, 0.16);
+  --tag-added-fg: #8fc4a4;
+  --tag-changed-bg: rgba(201, 138, 75, 0.16);
+  --tag-changed-fg: #e0a870;
+  --tag-removed-bg: rgba(193, 73, 74, 0.16);
+  --tag-removed-fg: #e08788;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --surface: #e7e1d2;
+    --surface-2: #ddd6c4;
+    --surface-3: #cfc7b1;
+    --text: #211d16;
+    --text-dim: #675e4d;
+    --brass: #8a5f24;
+    --brass-dim: #b08a45;
+    --blood: #7c1e26;
+    --rule: rgba(122, 80, 30, 0.3);
+    --good: #3f7355;
+    --warn: #9a5420;
+    --neutral: #4d5a6b;
+    --shadow: rgba(90, 75, 45, 0.18);
+    --tag-added-bg: rgba(63, 115, 85, 0.14);
+    --tag-added-fg: #2f5d43;
+    --tag-changed-bg: rgba(154, 84, 32, 0.14);
+    --tag-changed-fg: #7c4319;
+    --tag-removed-bg: rgba(124, 30, 38, 0.14);
+    --tag-removed-fg: #7c1e26;
+    color-scheme: light;
+  }
+}
+:root[data-theme="dark"] {
+  --surface: #12151b; --surface-2: #191e25; --surface-3: #212830;
+  --text: #e9e4d6; --text-dim: #a39d8c;
+  --brass: #c9a24c; --brass-dim: #8a6a38;
+  --blood: #c1494a; --rule: rgba(201, 162, 76, 0.24);
+  --good: #6ba080; --warn: #c98a4b; --neutral: #7c8798;
+  --shadow: rgba(0, 0, 0, 0.45);
+  --tag-added-bg: rgba(107, 160, 128, 0.16); --tag-added-fg: #8fc4a4;
+  --tag-changed-bg: rgba(201, 138, 75, 0.16); --tag-changed-fg: #e0a870;
+  --tag-removed-bg: rgba(193, 73, 74, 0.16); --tag-removed-fg: #e08788;
+  color-scheme: dark;
+}
+:root[data-theme="light"] {
+  --surface: #e7e1d2; --surface-2: #ddd6c4; --surface-3: #cfc7b1;
+  --text: #211d16; --text-dim: #675e4d;
+  --brass: #8a5f24; --brass-dim: #b08a45;
+  --blood: #7c1e26; --rule: rgba(122, 80, 30, 0.3);
+  --good: #3f7355; --warn: #9a5420; --neutral: #4d5a6b;
+  --shadow: rgba(90, 75, 45, 0.18);
+  --tag-added-bg: rgba(63, 115, 85, 0.14); --tag-added-fg: #2f5d43;
+  --tag-changed-bg: rgba(154, 84, 32, 0.14); --tag-changed-fg: #7c4319;
+  --tag-removed-bg: rgba(124, 30, 38, 0.14); --tag-removed-fg: #7c1e26;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--surface);
+  color: var(--text);
+  font-family: "Iowan Old Style", "Palatino Linotype", Georgia, "Noto Serif", serif;
+  line-height: 1.5;
+}
+a { color: var(--brass); }
+code, .mono {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+
+.wrap { max-width: 880px; margin: 0 auto; padding: 0 20px 80px; }
+
+nav.site {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  align-items: center;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--surface-2);
+  font-size: 0.85rem;
+}
+nav.site a {
+  color: var(--text-dim);
+  text-decoration: none;
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+}
+nav.site a:hover { color: var(--brass); }
+nav.site a.current { color: var(--brass); border-bottom-color: var(--brass); }
+
+header.hero {
+  padding: 52px 20px 28px;
+  text-align: center;
+}
+header.hero .crest {
+  font-size: 0.78rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--brass-dim);
+  margin: 0 0 10px;
+}
+header.hero h1 {
+  font-size: clamp(2rem, 5vw, 2.9rem);
+  margin: 0 0 12px;
+  letter-spacing: 0.01em;
+}
+header.hero p {
+  color: var(--text-dim);
+  max-width: 56ch;
+  margin: 0 auto;
+  font-size: 1.02rem;
+}
+header.hero .rule {
+  width: 120px;
+  height: 2px;
+  background: var(--brass);
+  opacity: 0.6;
+  margin: 22px auto 0;
+}
+
+.controls {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  padding: 14px 0;
+  margin-bottom: 30px;
+  background: linear-gradient(var(--surface) 78%, transparent);
+}
+.controls input[type="search"] {
+  flex: 1 1 220px;
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  color: var(--text);
+  padding: 9px 13px;
+  border-radius: 7px;
+  font: inherit;
+  font-size: 0.92rem;
+}
+.controls input[type="search"]:focus {
+  outline: none;
+  border-color: var(--brass);
+}
+.chips { display: flex; gap: 8px; flex-wrap: wrap; }
+.chip {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.76rem;
+  padding: 6px 11px;
+  border-radius: 999px;
+  border: 1px solid var(--rule);
+  background: var(--surface-2);
+  color: var(--text-dim);
+  cursor: pointer;
+  user-select: none;
+  transition: border-color 0.15s, color 0.15s;
+}
+.chip:hover { color: var(--text); }
+.chip[aria-pressed="true"] {
+  border-color: var(--brass);
+  color: var(--brass);
+}
+#empty-state {
+  display: none;
+  text-align: center;
+  color: var(--text-dim);
+  padding: 40px 0;
+  font-style: italic;
+}
+
+.timeline { position: relative; }
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: var(--rule);
+}
+
+.entry {
+  position: relative;
+  padding-left: 34px;
+  margin-bottom: 34px;
+}
+.entry::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 8px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid var(--brass);
+}
+.entry.latest::before {
+  background: var(--brass);
+  box-shadow: 0 0 0 4px var(--tag-added-bg);
+}
+
+.card {
+  background: var(--surface-2);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 20px 22px 18px;
+  box-shadow: 0 6px 18px var(--shadow);
+}
+.card-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px 14px;
+  margin-bottom: 4px;
+}
+.version {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: var(--brass);
+}
+.date {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.82rem;
+  color: var(--text-dim);
+}
+.latest-badge {
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--good);
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  padding: 1px 8px;
+}
+.card-title {
+  font-size: 1.2rem;
+  margin: 2px 0 14px;
+  color: var(--text);
+}
+.section { margin: 12px 0; }
+.section-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.section-label.added { color: var(--tag-added-fg); }
+.section-label.changed { color: var(--tag-changed-fg); }
+.section-label.removed { color: var(--tag-removed-fg); }
+.section ul {
+  margin: 0;
+  padding-left: 1.15em;
+}
+.section li { margin: 3px 0; }
+.section li .file { color: var(--text); }
+.note {
+  font-size: 0.92rem;
+  color: var(--text-dim);
+  font-style: italic;
+  margin: 10px 0;
+  border-left: 2px solid var(--rule);
+  padding-left: 10px;
+}
+
+.impacted {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--rule);
+}
+.impacted .section-label { color: var(--text-dim); }
+.pills { display: flex; flex-wrap: wrap; gap: 6px; }
+.pill {
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.76rem;
+  background: var(--surface-3);
+  border: 1px solid var(--rule);
+  color: var(--text-dim);
+  border-radius: 6px;
+  padding: 2px 8px;
+}
+
+footer.page {
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  padding: 30px 0 10px;
+}
+footer.page a { color: var(--brass-dim); }
+
+@media (max-width: 520px) {
+  .wrap { padding: 0 14px 60px; }
+  header.hero { padding: 40px 14px 20px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="site" aria-label="Site pages">
+  <a href="README.md">Overview</a>
+  <a href="westeros_chess.html">Westeros Chess</a>
+  <a href="westeros_map.html">Map of Westeros</a>
+  <a href="westeros_chronicle.html">Chronicle</a>
+  <a href="changelog.html" class="current" aria-current="page">Changelog</a>
+</nav>
+
+<header class="hero">
+  <p class="crest">A record kept by the Grand Maester</p>
+  <h1>Changelog</h1>
+  <p>Every notable change to this repository, newest first — what was
+    added, what changed, what was struck from the record, and exactly
+    which files and functions each entry touched.</p>
+  <div class="rule"></div>
+</header>
+
+<div class="wrap">
+  <div class="controls">
+    <input type="search" id="search" placeholder="Search versions, files, functions…" aria-label="Search changelog" />
+    <div class="chips" id="chips" role="group" aria-label="Filter by change type">
+      <button class="chip" data-filter="all" aria-pressed="true">All</button>
+      <button class="chip" data-filter="added" aria-pressed="false">Added</button>
+      <button class="chip" data-filter="changed" aria-pressed="false">Changed</button>
+      <button class="chip" data-filter="removed" aria-pressed="false">Removed</button>
+    </div>
+  </div>
+
+  <div id="empty-state">No entries match your search.</div>
+  <div class="timeline" id="timeline"></div>
+
+  <footer class="page">
+    Versions are assigned retroactively from the repo's git history — see
+    <a href="CHANGELOG.md">CHANGELOG.md</a> for the plain-text source.
+  </footer>
+</div>
+
+<script>
+const CHANGELOG = [
+  {
+    version: "0.8.0",
+    date: "2026-08-14",
+    title: "Project changelog",
+    added: [
+      "<span class=\"file\"><code>CHANGELOG.md</code></span> — full version history of the repo.",
+      "<span class=\"file\"><code>changelog.html</code></span> — this page: a styled, filterable view of the same history."
+    ],
+    impacted: ["README.md"]
+  },
+  {
+    version: "0.7.0",
+    date: "2026-08-04",
+    title: "Chronicle of Westeros recap page",
+    added: [
+      "<code>westeros_chronicle.html</code> — five narrative eras (Ned Stark's execution through the Battle of Winterfell and the fall of King's Landing), a fate ledger for all eight great houses plus the Night's Watch, and arcs for the seven characters who decided most of it.",
+      "A brass-astrolabe canvas animation behind the header, driven by <code>drawRing()</code>, that respects <code>prefers-reduced-motion</code>.",
+      "Fraunces/Newsreader webfonts bundled inline as base64 — no network access needed."
+    ],
+    changed: [
+      "<code>README.md</code> — new \"Chronicle of Westeros\" section."
+    ],
+    impacted: ["westeros_chronicle.html", "drawRing()", "README.md"]
+  },
+  {
+    version: "0.6.1",
+    date: "2026-07-08",
+    title: "Avatar-based radar chart legend",
+    changed: [
+      "<code>GOT.py</code> — the radar chart's legend switched from matplotlib's plain-text legend to circular character-portrait thumbnails, ringed in each character's line color."
+    ],
+    added: [
+      "<code>avatar_path()</code> in <code>GOT.py</code> — resolves a character's name to their portrait file under <code>avatars/</code>.",
+      "<code>avatars/*.png</code> — six DiceBear-generated circular portraits (Jon Snow, Tywin Lannister, Lord Varys, Arya Stark, Sansa Stark, Daenerys Targaryen).",
+      "<code>avatars/README.md</code> — documents how to regenerate the portraits."
+    ],
+    impacted: ["GOT.py", "avatar_path()", "legend_ax drawing loop", "avatars/", "README.md"]
+  },
+  {
+    version: "0.6.0",
+    date: "2026-07-08",
+    title: "Interactive Map of Westeros",
+    added: [
+      "<code>westeros_map.html</code> — an interactive map built with Leaflet in <code>CRS.Simple</code> mode; the coastline, rivers, forests, mountains and the Wall are original vector shapes.",
+      "14 clickable seats (Winterfell, King's Landing, Casterly Rock, Sunspear, and more) with popups tied to the Westeros Chess roster, plus a sidebar region legend that flies the map to any region.",
+      "Helper functions <code>toLatLng()</code>, <code>pathD()</code>, <code>el()</code>, and <code>makeIcon()</code>."
+    ],
+    changed: [
+      "<code>README.md</code> — new \"Map of Westeros\" section."
+    ],
+    impacted: ["westeros_map.html", "toLatLng()", "pathD()", "el()", "makeIcon()", "README.md"]
+  },
+  {
+    version: "0.5.0",
+    date: "2026-07-08",
+    title: "Westeros Chess becomes a full playable game",
+    added: [
+      "<code>westeros_chess.html</code> — a fully playable, self-contained chess game skinned with GoT characters, built on a bundled chess.js engine (legal moves, check/checkmate/stalemate/draw detection, castling, en passant, pawn promotion).",
+      "App-level UI functions: <code>buildInitialPieces()</code>, <code>renderBoard()</code>, <code>renderAll()</code>, <code>renderHistory()</code>, <code>renderGraveyard()</code>, <code>renderPromotionPicker()</code>, <code>updateStatus()</code>, <code>initials()</code>.",
+      "A move history panel, a \"Fallen\" panel for captured pieces, undo, and a board-flip toggle."
+    ],
+    removed: [
+      "<code>Got.jsx</code> and <code>WesterosChess.py</code> — the earlier React and Python prototypes, superseded by the single-file HTML game."
+    ],
+    changed: [
+      "<code>README.md</code> — \"Westeros Chess\" section rewritten to describe the shipped game instead of the prototypes."
+    ],
+    impacted: ["westeros_chess.html", "buildInitialPieces()", "renderBoard()", "renderAll()", "Got.jsx (removed)", "WesterosChess.py (removed)", "README.md"]
+  },
+  {
+    version: "0.4.0",
+    date: "2025-11-10",
+    title: "got_python package scaffold",
+    added: [
+      "<code>got_python/__init__.py</code> and <code>got_python/README.md</code> — package scaffold for future Python analysis modules, establishing the <code>got_python</code> import boundary."
+    ],
+    changed: [
+      "<code>README.md</code> — documents the suggested <code>got_python</code> structure and example usage."
+    ],
+    impacted: ["got_python/", "README.md"]
+  },
+  {
+    version: "0.3.0",
+    date: "2025-11-07",
+    title: "Chess prototypes",
+    added: [
+      "<code>Got.jsx</code> — a React prototype for a GoT-skinned chess UI.",
+      "<code>WesterosChess.py</code> — a Python prototype exploring the chess logic."
+    ],
+    note: "Both prototypes were removed in 0.5.0 once westeros_chess.html shipped as the finished game.",
+    impacted: ["Got.jsx (later removed)", "WesterosChess.py (later removed)"]
+  },
+  {
+    version: "0.2.0",
+    date: "2025-11-05",
+    title: "Radar chart roster & legend tweaks",
+    changed: [
+      "<code>GOT.py</code> — renamed <code>\"Varys\"</code> to <code>\"Lord Varys\"</code> in the <code>characters</code> dict, added a <code>\"Daenerys Targaryen\"</code> entry, and moved the legend's <code>bbox_to_anchor</code> from <code>(1.3, 1.1)</code> to <code>(1.5, 1.1)</code> to fit the wider legend.",
+      "<code>README.md</code> — added a \"Westeros Chess\" section ahead of the game actually shipping."
+    ],
+    impacted: ["GOT.py", "characters dict", "ax.legend()", "README.md"]
+  },
+  {
+    version: "0.1.0",
+    date: "2025-10-31",
+    title: "Initial commit & first radar chart",
+    added: [
+      "Initial commit — <code>README.md</code> project description.",
+      "<code>GOT.py</code> — the first radar chart, comparing five characters (Jon Snow, Tywin Lannister, Varys, Arya Stark, Sansa Stark) across seven traits (Leadership, Combat, Scheming, Strategy, Planning, Analysis, Origin) using a matplotlib polar plot."
+    ],
+    impacted: ["README.md", "GOT.py"]
+  }
+];
+
+const timelineEl = document.getElementById("timeline");
+const emptyEl = document.getElementById("empty-state");
+const searchEl = document.getElementById("search");
+const chipsEl = document.getElementById("chips");
+let activeFilter = "all";
+
+function sectionBlock(label, cls, items) {
+  if (!items || !items.length) return "";
+  return `<div class="section">
+    <div class="section-label ${cls}">${label}</div>
+    <ul>${items.map(i => `<li>${i}</li>`).join("")}</ul>
+  </div>`;
+}
+
+function renderEntry(entry, index) {
+  const el = document.createElement("div");
+  el.className = "entry" + (index === 0 ? " latest" : "");
+  el.dataset.searchable = [
+    entry.version, entry.title,
+    (entry.added || []).join(" "),
+    (entry.changed || []).join(" "),
+    (entry.removed || []).join(" "),
+    (entry.impacted || []).join(" "),
+    entry.note || ""
+  ].join(" ").toLowerCase().replace(/<[^>]+>/g, " ");
+  el.dataset.types = ["added", "changed", "removed"].filter(t => entry[t] && entry[t].length).join(",");
+
+  el.innerHTML = `
+    <div class="card">
+      <div class="card-head">
+        <span class="version">v${entry.version}</span>
+        <span class="date">${entry.date}</span>
+        ${index === 0 ? '<span class="latest-badge">Latest</span>' : ""}
+      </div>
+      <h2 class="card-title">${entry.title}</h2>
+      ${sectionBlock("Added", "added", entry.added)}
+      ${sectionBlock("Changed", "changed", entry.changed)}
+      ${sectionBlock("Removed", "removed", entry.removed)}
+      ${entry.note ? `<div class="note">${entry.note}</div>` : ""}
+      ${entry.impacted && entry.impacted.length ? `
+        <div class="impacted">
+          <div class="section-label">Impacted files &amp; functions</div>
+          <div class="pills">${entry.impacted.map(p => `<span class="pill">${p}</span>`).join("")}</div>
+        </div>` : ""}
+    </div>`;
+  return el;
+}
+
+CHANGELOG.forEach((entry, i) => timelineEl.appendChild(renderEntry(entry, i)));
+
+function applyFilters() {
+  const q = searchEl.value.trim().toLowerCase();
+  let visible = 0;
+  timelineEl.querySelectorAll(".entry").forEach(el => {
+    const matchesText = !q || el.dataset.searchable.includes(q);
+    const types = el.dataset.types.split(",");
+    const matchesType = activeFilter === "all" || types.includes(activeFilter);
+    const show = matchesText && matchesType;
+    el.style.display = show ? "" : "none";
+    if (show) visible++;
+  });
+  emptyEl.style.display = visible === 0 ? "block" : "none";
+}
+
+searchEl.addEventListener("input", applyFilters);
+chipsEl.addEventListener("click", (e) => {
+  const btn = e.target.closest(".chip");
+  if (!btn) return;
+  activeFilter = btn.dataset.filter;
+  chipsEl.querySelectorAll(".chip").forEach(c => c.setAttribute("aria-pressed", String(c === btn)));
+  applyFilters();
+});
+</script>
+
+</body>
+</html>

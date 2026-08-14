@@ -42,6 +42,13 @@ in any browser, no build step or install required.
   inline as base64 fonts — no network access needed, and it adapts to both
   light and dark themes.
 
+# Changelog
+
+[`CHANGELOG.md`](CHANGELOG.md) tracks every notable change to this repo,
+version by version, with the files and functions each one touched. Open
+[`changelog.html`](changelog.html) in a browser for a searchable, filterable
+view of the same history — no build step or install required.
+
 # Radar chart
 
 `GOT.py` plots a radar chart comparing characters across traits like
